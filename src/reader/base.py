@@ -255,30 +255,30 @@ def read_tfrecord_to_batch(filename, epoch, batch_size, pad_value, shuffle=True)
   Returns:
     a tuple of batched tensors
   '''
-  with tf.device('/cpu:0'):
-    dataset = tf.data.TFRecordDataset([filename])
-    # Parse the record into tensors
-    dataset = dataset.map(_parse_tfexample) 
-    dataset = dataset.repeat(epoch)
-    if shuffle:
-      dataset = dataset.shuffle(buffer_size=100)
-    
-    # [] for no padding, [None] for padding to maximum length
-    # n = FLAGS.max_len
-    # if FLAGS.model == 'mtl':
-    #   # lexical, rid, direction, sentence, position1, position2
-    #   padded_shapes = ([None,], [], [], [n], [n], [n])
-    # else:
-    #   # lexical, rid, sentence, position1, position2
-    #   padded_shapes = ([None,], [], [n], [n], [n])
-    # pad_value = tf.convert_to_tensor(pad_value)
-    # dataset = dataset.padded_batch(batch_size, padded_shapes,
-    #                                padding_values=pad_value)
-    dataset = dataset.batch(batch_size)
-    
-    iterator = dataset.make_one_shot_iterator()
-    batch = iterator.get_next()
-    return batch
+  # with tf.device('/cpu:0'):
+  dataset = tf.contrib.data.TFRecordDataset([filename])
+  # Parse the record into tensors
+  dataset = dataset.map(_parse_tfexample)
+  dataset = dataset.repeat(epoch)
+  if shuffle:
+    dataset = dataset.shuffle(buffer_size=100)
+
+  # [] for no padding, [None] for padding to maximum length
+  # n = FLAGS.max_len
+  # if FLAGS.model == 'mtl':
+  #   # lexical, rid, direction, sentence, position1, position2
+  #   padded_shapes = ([None,], [], [], [n], [n], [n])
+  # else:
+  #   # lexical, rid, sentence, position1, position2
+  #   padded_shapes = ([None,], [], [n], [n], [n])
+  # pad_value = tf.convert_to_tensor(pad_value)
+  # dataset = dataset.padded_batch(batch_size, padded_shapes,
+  #                                padding_values=pad_value)
+  dataset = dataset.batch(batch_size)
+
+  iterator = dataset.make_one_shot_iterator()
+  batch = iterator.get_next()
+  return batch
 
 
 def inputs():

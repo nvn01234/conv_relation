@@ -148,7 +148,8 @@ def main(_):
                         tf.local_variables_initializer())# for file queue
 
     config = tf.ConfigProto()
-    # config.gpu_options.per_process_gpu_memory_fraction = 0.9 # 占用GPU90%的显存 
+    # config.gpu_options.per_process_gpu_memory_fraction = 0.9 # 占用GPU90%的显存
+    config.log_device_placement = False
     config.gpu_options.allow_growth = True
     
     # sv finalize the graph
