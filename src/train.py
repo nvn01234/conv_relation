@@ -20,7 +20,7 @@ flags.DEFINE_string("vocab_file", "data/vocab.txt",
                               "vocab of train and test data")
 
 flags.DEFINE_string("google_embed300_file", 
-                             "data/embed300.google.npy", 
+                             "data/google_embed300.npy",
                              "google news word embeddding")
 flags.DEFINE_string("google_words_file", 
                              "data/google_words.lst", 
