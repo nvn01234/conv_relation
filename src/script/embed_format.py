@@ -57,11 +57,11 @@ def convert_google_embedding(
   print('converted to float32')
   np.save(new_embed_npfile, embed)
 
-convert_senna_embedding('data/embedding/senna/words.lst',
-                        'data/embedding/senna/embeddings.txt',
-                        'data/senna_words.lst',
-                        'data/senna_embed50.npy',
-                        50)
+# convert_senna_embedding('data/embedding/senna/words.lst',
+#                         'data/embedding/senna/embeddings.txt',
+#                         'data/senna_words.lst',
+#                         'data/senna_embed50.npy',
+#                         50)
 
 
 convert_google_embedding('data/GoogleNews-vectors-negative300.bin',
