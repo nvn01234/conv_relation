@@ -44,7 +44,7 @@ def convert_google_embedding(
   print('load finished.')
   
   embed = []
-  with open(new_words_file, 'w') as f:
+  with open(new_words_file, 'w', encoding="utf8") as f:
     for i, w in enumerate(model.index2word):
       if i%1000000 == 0:
         print(i)
