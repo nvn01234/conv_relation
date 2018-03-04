@@ -64,7 +64,7 @@ def convert_google_embedding(
 #                         50)
 
 
-convert_google_embedding('data/GoogleNews-vectors-negative300.bin',
-                         'data/google_words.lst',
-                         'data/google_embed300.npy')
+convert_google_embedding('../../data/GoogleNews-vectors-negative300.bin',
+                         '../../data/google_words.lst',
+                         '../../data/google_embed300.npy')
   
